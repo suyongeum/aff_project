@@ -1,0 +1,15 @@
+# ignore all files in the .idea/ directory (pycharm files)
+.idea/
+
+# any migrations files
+**/migrations/*
+**/migrations/*/
+
+# cached files
+**/__pycache__/
+
+# setting files
+**/settings*.py
+
+# image files
+**/media/*

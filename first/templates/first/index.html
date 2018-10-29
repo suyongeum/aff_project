@@ -1,0 +1,64 @@
+{% extends 'first/base.html' %}
+
+{% block content %}
+
+       <!-- Page Content -->
+    <div class="container">
+
+     <div class="header">
+         <a href="https://www.amazon.com/gp/goldbox/?tag=dotdb-20&ascsubtag=v7_3_al_2om_P0_420_x01_-srt-" >
+             <img class="card-img" src="./media/bg21.jpg"></a>
+     </div>
+
+      <div class="middle-menu">
+              <form action="{{ request.path }}" method="post" class="form-inline" id="option">
+                  {% csrf_token %}
+                  <table border="0">
+                    {{ form.selection.label_tag }} &nbsp; {{ form.selection}}
+                  </table>
+                  &nbsp;<button class="btn btn-success" form="option" type="submit">Submit</button>
+              </form>
+      </div>
+
+      <div class="middle"><div>
+
+      <!-- Page Features -->
+      <div class="row text-center ">
+
+          {% for item in products %}
+
+            <div class="col-xs-12 col-sm-6 col-md-4">
+
+              <div class="card-title"><h3><a href="{{ item.link }}">{{ item.name }}</a></h3></div>
+
+              <div class="card-photo">
+                <a href="{{ item.link }}"><img class="card-img" src="media/{{ item.image }}"></a>
+              </div>
+
+              <div class="card-body">
+                  <p class="card-text">
+                      {{ item.description }}
+                  </p>
+              </div>
+
+             <div class="card-extra">
+                 <a href="{{ item.link }}" class="btn btn-warning btn-sm"><span class="button-font"><b>FIND IT OUT</b> </span></a>
+             </div>
+
+             <div class="card-price">
+                 <i class="fas fa-dollar-sign"> <span class="price">{{ item.price }}</span></i>
+             </div>
+
+             <div class="card-click">
+                 <i class="far fa-thumbs-up"> <span class="click">{{ item.clicks }} likes </span> </i>
+             </div>
+
+            </div>
+        {% endfor %}
+
+      </div>
+      <!-- /.row -->
+    </div>
+    <!-- /.container -->
+
+{% endblock %}

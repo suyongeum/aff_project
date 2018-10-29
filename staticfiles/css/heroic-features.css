@@ -1,0 +1,185 @@
+/*!
+ * Start Bootstrap - Heroic Features (https://startbootstrap.com/template-overviews/heroic-features)
+ * Copyright 2013-2017 Start Bootstrap
+ * Licensed under MIT (https://github.com/BlackrockDigital/startbootstrap-heroic-features/blob/master/LICENSE)
+ */
+
+body {
+  padding-top: 70px;
+}
+
+@media (min-width: 100px) {
+  body {
+    padding-top: 70px;
+  }
+}
+
+.card {
+  height: 100%;
+}
+
+div{
+  line-height:20px;
+}
+
+.middle-menu {
+  margin: 0 0 0 0;
+  padding: 40px 0 0 0;
+  /*border-bottom: solid 1px #afffa8;*/
+}
+
+.middle {
+  border-top: solid 1px #afffa8;
+  margin-top: 10px
+}
+
+.middle-menu a {
+  color: #575e66;
+  text-decoration: none;
+  font-size: 24px;
+}
+
+.middle-menu a:hover {
+  color: #faab37;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.middle-menu ul li .active {
+  color: #166ba2;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+ul {
+  margin: 0;
+  padding: 0;
+}
+
+ul li{
+  display: inline;
+}
+
+ul li span {
+  margin: 0;
+  padding: 0 20px 0 0;
+}
+
+.card-title {
+  margin: 0;
+  padding: 30px 0 5px 0;
+}
+.card-title h3 {
+  font-family: Oswald,Arial,sans-serif;
+  font-size: 15pt;
+  margin: 0;
+  padding: 0;
+}
+
+.card-title a {
+  color: #575e66;
+}
+
+.card-title h3 a:hover {
+  color: #faab37;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.card-photo {
+  border: 1px solid #cccccc;
+}
+
+.card-body {
+  margin: 0;
+  padding: 5px 0 10px 0;
+  text-align: justify;
+}
+
+.card-body p {
+  font-size: 12px;
+  font-family: 'Helvetica Neue',Helvetica,Arial,sans-serif;
+  line-height:17px;
+}
+
+.btn-warning {
+  float: right;
+}
+
+.button-font {
+  color: white;
+  font-family: 'Helvetica Neue',Helvetica,Arial,sans-serif;
+}
+
+.card-price {
+  text-align: left;
+  font-size: 16px;
+}
+
+.card-click {
+  text-align: left;
+  font-size: 14px;
+}
+
+.card-price .price{
+  color: #606060;
+  letter-spacing: 1px;
+  font-family: Oswald, Arial,sans-serif;
+}
+
+.card-click .click{
+  color: #333;
+  font-family: 'Helvetica Neue',Helvetica,Arial,sans-serif;
+}
+
+footer {
+  margin: 25px 0 0 0;
+}
+
+.middle-menu {
+  display: block;
+}
+
+.pagination {
+  margin: 75px 0 0 0;
+  padding: 0;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+.pagination-action {
+  margin: 0 0.1em;
+  display: inline-block;
+  padding: 0.5em;
+  color: #B9B9B9;
+  font-size: 1.5em;
+}
+
+.pagination-action:hover {
+  color: #12aa02;
+}
+
+.pagination-number {
+  background-color: #afffa8;
+  padding: 0.3em 0.5em;
+  color: #ffffff;
+  border-radius: 10px;
+  font-size: 1em;
+}
+
+.pagination-number:hover, .pagination-current {
+  background-color: #12aa02;
+}
+
+
+
+
+
+
+
+
+
+
+
+

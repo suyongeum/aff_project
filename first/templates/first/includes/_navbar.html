@@ -1,0 +1,30 @@
+    <nav class="navbar navbar-expand-md navbar-dark bg-success fixed-top">
+     <div class="container">
+      <a class="navbar-brand" href="/"><b>&#120074;&#120108;&#120108;&#120097;&#120118;&#120077;&#120094;&#120109;&#120108;&#120107;</b></a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExample03" aria-controls="navbarsExample03" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="navbarsExample03">
+        <ul class="navbar-nav mr-auto menu">
+          <li class="nav-item">
+            <a class="nav-link" href="/man"><b>Man</b></a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/woman"><b>Woman</b></a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/geek"><b>Geek</b></a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/kids"><b>Kids</b></a>
+          </li>
+        </ul>
+        <form action="{{ item.link }}" method="post" class="form-inline my-2 my-md-0">
+            {% csrf_token %}
+{#            <input class="form-control" type="search" placeholder="Search" name="q">#}
+            {{ form.search}}
+        </form>
+      </div>
+    </div>
+    </nav>
