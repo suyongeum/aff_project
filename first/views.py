@@ -172,3 +172,12 @@ def kids(request):
     products_portion = paginator.get_page(page)
 
     return render(request, 'first/display.html', {'products': products_portion, 'form': form})
+
+def dbupdate(request):
+    if request.GET.get('id'):
+        id = request.GET.get('id')
+        # access DB and add one.
+        object = Product.objects.get(pk=id)
+        object.clicks += 1
+        object.save()
+    return HttpResponse('OK')

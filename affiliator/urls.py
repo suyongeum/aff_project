@@ -29,6 +29,7 @@ urlpatterns = [
     url(r'^woman$', views.woman, name='woman'),
     url(r'^geek$', views.geek, name='geek'),
     url(r'^kids$', views.kids, name='kids'),
+	url(r'^dbupdate$', views.dbupdate, name='dbupdate'),
     #url(r'^search$', views.search, name='search'),
     # url(r'^(?P<who>[a-zA-Z]+)/newsort$', views.newsort, name='newsort'),
     # url(r'^(?P<who>[a-zA-Z]+)/popularsort$', views.popularsort, name='popularsort'),

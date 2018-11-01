@@ -14,6 +14,15 @@ $(document).ready(function() {
     $('.middle-name a[href="'+pathname+'"]').parent().addClass('active').siblings().removeClass('active');
 });
 
+function dbupdate(id) {
+    var xhr = new XMLHttpRequest();
+    xhr.open('GET', '/dbupdate?id='+id, true);
+    xhr.onload = function() {
+        console.log(this.responseText);
+    };
+    xhr.send();
+}
+
     // name        = models.CharField(max_length=100)
     // description = models.TextField()
     // price       = models.DecimalField(max_digits=6, decimal_places=2)
