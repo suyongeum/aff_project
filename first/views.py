@@ -2,8 +2,9 @@ from django.core.paginator import EmptyPage, PageNotAnInteger, Paginator
 from django.shortcuts import render
 from .models import Product
 from .forms import SelectionForm
+from django.http import HttpResponse
 
-# Create your views here.
+#Create your views here.
 
 items_in_page = 9
 
