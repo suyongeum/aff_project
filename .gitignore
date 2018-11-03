@@ -13,3 +13,6 @@
 
 # image files
 **/media/*
+
+# js file
+**/js/vig.js
