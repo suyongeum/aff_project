@@ -16,3 +16,6 @@
 
 # js file
 **/js/vig.js
+
+# third_party setting file
+**/includes/third.html
