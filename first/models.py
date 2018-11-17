@@ -6,7 +6,7 @@ import random
 class Product(models.Model):
     name        = models.CharField(max_length=50)
     description = models.TextField()
-    price       = models.DecimalField(max_digits=6, decimal_places=2)
+    price       = models.DecimalField(max_digits=9, decimal_places=2)
     clicks      = models.IntegerField(default=random.randint(1,30))
     image       = models.ImageField()
     link        = models.CharField(max_length=200)

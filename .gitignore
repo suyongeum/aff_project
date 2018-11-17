@@ -16,4 +16,6 @@
 
 # js file
 **/js/vig.js
-**/js/third.js
+
+# third party files
+**/includes/third*
