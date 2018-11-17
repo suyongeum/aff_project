@@ -20,3 +20,6 @@
 
 # db file
 **/db*
+
+# third party files
+**/includes/third*
