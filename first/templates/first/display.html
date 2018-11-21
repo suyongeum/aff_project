@@ -18,6 +18,7 @@
                   </table>
                   &nbsp;<button class="btn btn-success" form="option" type="submit">Submit</button>
               </form>
+
       </div>
 
       <div class="middle"><div>
@@ -27,12 +28,12 @@
 
           {% for item in products %}
 
-            <div class="col-xs-12 col-sm-6 col-md-4">
+            <div class="col-sm-12 col-sm-6 col-md-4">
 
-              <div class="card-title"><h3><a href="{{ item.link }}" onclick="dbupdate({{ item.id }})">{{ item.name }}</a></h3></div>
+              <div class="card-title"><h3><a href="{{ item.link }}" onclick="dbupdate({{ item.id }})" target="_blank">{{ item.name }}</a></h3></div>
 
               <div class="card-photo">
-                <a href="{{ item.link }}" onclick="dbupdate({{ item.id }})"><img class="card-img" src="media/{{ item.image }}"></a>
+                <a href="{{ item.link }}" onclick="dbupdate({{ item.id }})" target="_blank"><img class="card-img" src="media/{{ item.image }}"></a>
               </div>
 
               <div class="card-body">
@@ -42,7 +43,7 @@
               </div>
 
              <div class="card-extra">
-                 <a href="{{ item.link }}" class="btn btn-warning btn-sm" onclick="dbupdate({{ item.id }})"><span class="button-font"><b>FIND IT OUT</b> </span></a>
+                 <a href="{{ item.link }}" class="btn btn-warning btn-sm" onclick="dbupdate({{ item.id }})" target="_blank"><span class="button-font"><b>FIND IT OUT</b> </span></a>
              </div>
 
              <div class="card-price">
@@ -53,11 +54,23 @@
                  <i class="far fa-thumbs-up"> <span class="click">{{ item.clicks }} likes </span> </i>
              </div>
 
+             <div class="sns">
+                 <a href="https://pinterest.com/pin/create/button/?url={{ item.link }}&media={{ item.image }}&description={{ item.name }}" target="_blank" class="pinterest-bn">
+                 <span class="sns-font">Pinterest</span></a>
+             </div>
+
+             <div class="sns">
+                 <a href="https://twitter.com/intent/tweet?url=URL&text={{ item.name }}&via={{ item.link }}" target="_blank" class="tweet-bn">
+                 <span class="sns-font">Tweet</span></a>
+             </div>
+
+             <div class="sns">
+                 <a href="https://facebook.com/sharer.php?u={{ item.link }}" target="_blank" class="facebook-bn">
+                 <span class="sns-font">Facebook</span></a>
+             </div>
             </div>
         {% endfor %}
       </div>
-
-
       <!-- /.row -->
     </div>
     <!-- /.container -->

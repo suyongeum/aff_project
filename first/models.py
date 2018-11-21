@@ -15,6 +15,7 @@ class Product(models.Model):
     woman_tag   = models.BooleanField(default=True)
     geek_tag    = models.BooleanField(default=True)
     kid_tag     = models.BooleanField(default=True)
+    pet_tag     = models.BooleanField(default=True)
 
     def __str__(self):
         return self.name

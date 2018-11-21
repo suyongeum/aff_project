@@ -6,7 +6,7 @@ from django.http import HttpResponse
 
 #Create your views here.
 
-items_in_page = 9
+items_in_page = 24
 
 def index(request):
 
@@ -23,8 +23,10 @@ def index(request):
                 products = Product.objects.all().order_by('-datetime')
             elif sort_option == 'popular':
                 products = Product.objects.all().order_by('-clicks')
-            elif sort_option == 'price':
+            elif sort_option == 'price_cheap':
                 products = Product.objects.all().order_by('price')
+            elif sort_option == 'price_expensive':
+                products = Product.objects.all().order_by('-price')
             else:
                 products = Product.objects.all().order_by('-datetime')
     else:
@@ -38,140 +40,23 @@ def index(request):
     return render(request, 'first/display.html', {'products': products_portion, 'form': form})
 
 def man(request):
-    form = SelectionForm(request.POST or None)
-    if request.method == "POST" and form.is_valid():
-        sort_option = form.cleaned_data['selection']
-        result = form.cleaned_data['search']
-
-        if result:
-            if sort_option == 'newest':
-                products = Product.objects.filter(man_tag=True).filter(name__icontains=result).order_by('-datetime')
-            elif sort_option == 'popular':
-                products = Product.objects.filter(man_tag=True).filter(name__icontains=result).order_by('-clicks')
-            elif sort_option == 'price':
-                products = Product.objects.filter(man_tag=True).filter(name__icontains=result).order_by('price')
-            else:
-                products = Product.objects.filter(man_tag=True).filter(name__icontains=result).order_by('-datetime')
-        else:
-            if sort_option == 'newest':
-                products = Product.objects.filter(man_tag=True).order_by('-datetime')
-            elif sort_option == 'popular':
-                products = Product.objects.filter(man_tag=True).order_by('-clicks')
-            elif sort_option == 'price':
-                products = Product.objects.filter(man_tag=True).order_by('price')
-            else:
-                products = Product.objects.filter(man_tag=True).order_by('-datetime')
-    else:
-        products = Product.objects.filter(man_tag=True).order_by('-datetime')
-
-    # Pagination is implementing
-    paginator = Paginator(products, items_in_page)  # Show 25 contacts per page
-    page = request.GET.get('page')
-    products_portion = paginator.get_page(page)
-
+    products_portion, form = which_product(request, 'man')
     return render(request, 'first/display.html', {'products': products_portion, 'form': form})
 
 def woman(request):
-    form = SelectionForm(request.POST or None)
-    if request.method == "POST" and form.is_valid():
-        sort_option = form.cleaned_data['selection']
-        result = form.cleaned_data['search']
-
-        if result:
-            if sort_option == 'newest':
-                products = Product.objects.filter(woman_tag=True).filter(name__icontains=result).order_by('-datetime')
-            elif sort_option == 'popular':
-                products = Product.objects.filter(woman_tag=True).filter(name__icontains=result).order_by('-clicks')
-            elif sort_option == 'price':
-                products = Product.objects.filter(woman_tag=True).filter(name__icontains=result).order_by('price')
-            else:
-                products = Product.objects.filter(woman_tag=True).filter(name__icontains=result).order_by('-datetime')
-        else:
-            if sort_option == 'newest':
-                products = Product.objects.filter(woman_tag=True).order_by('-datetime')
-            elif sort_option == 'popular':
-                products = Product.objects.filter(woman_tag=True).order_by('-clicks')
-            elif sort_option == 'price':
-                products = Product.objects.filter(woman_tag=True).order_by('price')
-            else:
-                products = Product.objects.filter(woman_tag=True).order_by('-datetime')
-    else:
-        products = Product.objects.filter(woman_tag=True).order_by('-datetime')
-
-    # Pagination is implementing
-    paginator = Paginator(products, items_in_page)  # Show 25 contacts per page
-    page = request.GET.get('page')
-    products_portion = paginator.get_page(page)
-
+    products_portion, form = which_product(request, 'woman')
     return render(request, 'first/display.html', {'products': products_portion, 'form': form})
 
-
 def geek(request):
-    form = SelectionForm(request.POST or None)
-    if request.method == "POST" and form.is_valid():
-        sort_option = form.cleaned_data['selection']
-        result = form.cleaned_data['search']
-
-        if result:
-            if sort_option == 'newest':
-                products = Product.objects.filter(geek_tag=True).filter(name__icontains=result).order_by('-datetime')
-            elif sort_option == 'popular':
-                products = Product.objects.filter(geek_tag=True).filter(name__icontains=result).order_by('-clicks')
-            elif sort_option == 'price':
-                products = Product.objects.filter(geek_tag=True).filter(name__icontains=result).order_by('price')
-            else:
-                products = Product.objects.filter(geek_tag=True).filter(name__icontains=result).order_by('-datetime')
-        else:
-            if sort_option == 'newest':
-                products = Product.objects.filter(geek_tag=True).order_by('-datetime')
-            elif sort_option == 'popular':
-                products = Product.objects.filter(geek_tag=True).order_by('-clicks')
-            elif sort_option == 'price':
-                products = Product.objects.filter(geek_tag=True).order_by('price')
-            else:
-                products = Product.objects.filter(geek_tag=True).order_by('-datetime')
-    else:
-        products = Product.objects.filter(geek_tag=True).order_by('-datetime')
-
-    # Pagination is implementing
-    paginator = Paginator(products, items_in_page)  # Show 25 contacts per page
-    page = request.GET.get('page')
-    products_portion = paginator.get_page(page)
-
+    products_portion, form = which_product(request, 'geek')
     return render(request, 'first/display.html', {'products': products_portion, 'form': form})
 
 def kids(request):
-    form = SelectionForm(request.POST or None)
-    if request.method == "POST" and form.is_valid():
-        sort_option = form.cleaned_data['selection']
-        result = form.cleaned_data['search']
+    products_portion, form = which_product(request, 'kid')
+    return render(request, 'first/display.html', {'products': products_portion, 'form': form})
 
-        if result:
-            if sort_option == 'newest':
-                products = Product.objects.filter(kid_tag=True).filter(name__icontains=result).order_by('-datetime')
-            elif sort_option == 'popular':
-                products = Product.objects.filter(kid_tag=True).filter(name__icontains=result).order_by('-clicks')
-            elif sort_option == 'price':
-                products = Product.objects.filter(kid_tag=True).filter(name__icontains=result).order_by('price')
-            else:
-                products = Product.objects.filter(kid_tag=True).filter(name__icontains=result).order_by('-datetime')
-        else:
-            if sort_option == 'newest':
-                products = Product.objects.filter(kid_tag=True).order_by('-datetime')
-            elif sort_option == 'popular':
-                products = Product.objects.filter(kid_tag=True).order_by('-clicks')
-            elif sort_option == 'price':
-                products = Product.objects.filter(kid_tag=True).order_by('price')
-            else:
-                products = Product.objects.filter(kid_tag=True).order_by('-datetime')
-    else:
-        products = Product.objects.filter(kid_tag=True).order_by('-datetime')
-
-    # Pagination is implementing
-    paginator = Paginator(products, items_in_page)  # Show 25 contacts per page
-    page = request.GET.get('page')
-    products_portion = paginator.get_page(page)
-
+def pet(request):
+    products_portion, form = which_product(request, 'pet')
     return render(request, 'first/display.html', {'products': products_portion, 'form': form})
 
 def dbupdate(request):
@@ -182,3 +67,53 @@ def dbupdate(request):
         object.clicks += 1
         object.save()
     return HttpResponse('OK')
+
+def which_product(request, which_tag):
+
+    if which_tag is 'man':
+        filtered = Product.objects.filter(man_tag=True)
+    if which_tag is 'woman':
+        filtered = Product.objects.filter(woman_tag=True)
+    if which_tag is 'geek':
+        filtered = Product.objects.filter(geek_tag=True)
+    if which_tag is 'kid':
+        filtered = Product.objects.filter(kid_tag=True)
+    if which_tag is 'pet':
+        filtered = Product.objects.filter(pet_tag=True)
+
+    form = SelectionForm(request.POST or None)
+    if request.method == "POST" and form.is_valid():
+        sort_option = form.cleaned_data['selection']
+        result = form.cleaned_data['search']
+
+        if result:
+            if sort_option == 'newest':
+                products = filtered.filter(name__icontains=result).order_by('-datetime')
+            elif sort_option == 'popular':
+                products = filtered.filter(name__icontains=result).order_by('-clicks')
+            elif sort_option == 'price_cheap':
+                products = filtered.filter(name__icontains=result).order_by('price')
+            elif sort_option == 'price_expensive':
+                products = Product.objects.all().order_by('-price')
+            else:
+                products = filtered.filter(name__icontains=result).order_by('-datetime')
+        else:
+            if sort_option == 'newest':
+                products = filtered.order_by('-datetime')
+            elif sort_option == 'popular':
+                products = filtered.order_by('-clicks')
+            elif sort_option == 'price_cheap':
+                products = filtered.filter(name__icontains=result).order_by('price')
+            elif sort_option == 'price_expensive':
+                products = Product.objects.all().order_by('-price')
+            else:
+                products = filtered.order_by('-datetime')
+    else:
+        products = filtered.order_by('-datetime')
+
+    # Pagination is implementing
+    paginator = Paginator(products, items_in_page)  # Show 25 contacts per page
+    page = request.GET.get('page')
+    products_portion = paginator.get_page(page)
+
+    return products_portion, form

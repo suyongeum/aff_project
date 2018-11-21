@@ -4,7 +4,8 @@ from django.utils.safestring import mark_safe
 SORT_CHOICES = (
     ('newest', 'NEWEST'),
     ('popular', 'POPULAR'),
-    ('price', 'PRICE'),
+    ('price_cheap', 'LOW PRICE'),
+    ('price_expensive', 'HIGH PRICE'),
 )
 
 class SelectionForm(forms.Form):
