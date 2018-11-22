@@ -132,6 +132,40 @@ ul li span {
   font-family: 'Helvetica Neue',Helvetica,Arial,sans-serif;
 }
 
+.sns {
+  float: right;
+}
+
+.sns-font {
+  alignment: right;
+  color: white;
+  font-size: 8pt;
+  font-family: 'Helvetica Neue',Helvetica,Arial,sans-serif;
+}
+
+.tweet-bn{
+    margin: 0 1px 0 1px;
+    padding: 0 4px 3px 3px;
+    background-color: #38A1F3;
+    border-radius: 2px;
+}
+
+.facebook-bn{
+    margin: 0 1px 0 1px;
+    padding: 0 4px 3px 3px;
+    background-color: #3b5998;
+    border-radius: 2px;
+}
+
+.pinterest-bn{
+    margin: 0 1px 0 1px;
+    padding: 0 4px 3px 3px;
+    background-color: #d74a33;
+    border-radius: 2px;
+}
+
+
+
 footer {
   margin: 25px 0 0 0;
 }
@@ -171,15 +205,3 @@ footer {
 .pagination-number:hover, .pagination-current {
   background-color: #12aa02;
 }
-
-
-
-
-
-
-
-
-
-
-
-
