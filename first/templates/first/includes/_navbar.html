@@ -5,24 +5,25 @@
         <span class="navbar-toggler-icon"></span>
       </button>
 
-      <div class="collapse navbar-collapse" id="navbarsExample03">
+      <div class="collapse navbar-collapse top-menu" id="navbarsExample03">
         <ul class="navbar-nav mr-auto menu">
           <li class="nav-item">
-            <a class="nav-link" href="/man"><b>Men</b></a>
+            <a class="nav-link" href="#" onclick="menuselection('man')" id="man"><b> Men</b></a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="/woman"><b>Women</b></a>
+            <a class="nav-link" href="#" onclick="menuselection('woman')" id="woman"><b>Women</b></a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="/kids"><b>Kids</b></a>
+            <a class="nav-link" href="#" onclick="menuselection('kids')" id="kids"><b>Kids</b></a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="/geek"><b>Geek</b></a>
+            <a class="nav-link" href="#" onclick="menuselection('geek')" id="geek"><b>Geek</b></a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="/pet"><b>Pets</b></a>
+            <a class="nav-link" href="#" onclick="menuselection('pet')" id="pet"><b>Pets</b></a>
           </li>
         </ul>
+
         <form action="{{ item.link }}" method="post" class="form-inline my-2 my-md-0">
             {% csrf_token %}
 {#            <input class="form-control" type="search" placeholder="Search" name="q">#}

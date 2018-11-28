@@ -36,7 +36,7 @@ div{
 .middle-menu a {
   color: #575e66;
   text-decoration: none;
-  font-size: 24px;
+
 }
 
 .middle-menu a:hover {
@@ -45,10 +45,10 @@ div{
   text-decoration: none;
 }
 
-.middle-menu ul li .active {
-  color: #166ba2;
-  cursor: pointer;
-  text-decoration: none;
+.middle-menu .active a{
+  color: #575e66;
+  font-weight: bold;
+  font-size: 120%;
 }
 
 ul {
@@ -164,8 +164,6 @@ ul li span {
     border-radius: 2px;
 }
 
-
-
 footer {
   margin: 25px 0 0 0;
 }
@@ -196,12 +194,22 @@ footer {
 
 .pagination-number {
   background-color: #afffa8;
-  padding: 0.3em 0.5em;
+  padding: 0.3em 0.7em;
+  margin:3px;
   color: #ffffff;
-  border-radius: 10px;
-  font-size: 1em;
+  border-style: solid;
+  border-width: 1px;
+  border-color: #1cd108;
+  border-radius: 4px;
+  font-size: 1.3em;
+
 }
 
 .pagination-number:hover, .pagination-current {
   background-color: #12aa02;
 }
+
+
+
+
+

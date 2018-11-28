@@ -9,38 +9,12 @@ from django.http import HttpResponse
 items_in_page = 24
 
 def index(request):
-
-    form = SelectionForm(request.POST or None)
-
-    if request.method == "POST" and form.is_valid():
-        sort_option = form.cleaned_data['selection']
-        result = form.cleaned_data['search']
-
-        if result:
-            products = Product.objects.filter(name__icontains=result)
-        else:
-            if sort_option == 'newest':
-                products = Product.objects.all().order_by('-datetime')
-            elif sort_option == 'popular':
-                products = Product.objects.all().order_by('-clicks')
-            elif sort_option == 'price_cheap':
-                products = Product.objects.all().order_by('price')
-            elif sort_option == 'price_expensive':
-                products = Product.objects.all().order_by('-price')
-            else:
-                products = Product.objects.all().order_by('-datetime')
-    else:
-        products = Product.objects.all().order_by('-datetime')
-
-    # Pagination is implementing
-    paginator = Paginator(products, items_in_page)  # Show 25 contacts per page
-    page = request.GET.get('page')
-    products_portion = paginator.get_page(page)
-
+    products_portion, form = which_product(request, 'index')
     return render(request, 'first/display.html', {'products': products_portion, 'form': form})
 
 def man(request):
     products_portion, form = which_product(request, 'man')
+    print("MAN", products_portion)
     return render(request, 'first/display.html', {'products': products_portion, 'form': form})
 
 def woman(request):
@@ -70,6 +44,8 @@ def dbupdate(request):
 
 def which_product(request, which_tag):
 
+    if which_tag is 'index':
+        filtered = Product.objects.all()
     if which_tag is 'man':
         filtered = Product.objects.filter(man_tag=True)
     if which_tag is 'woman':
@@ -82,19 +58,24 @@ def which_product(request, which_tag):
         filtered = Product.objects.filter(pet_tag=True)
 
     form = SelectionForm(request.POST or None)
-    if request.method == "POST" and form.is_valid():
-        sort_option = form.cleaned_data['selection']
+
+    if form.is_valid():
         result = form.cleaned_data['search']
+    else:
+        result = ''
+
+    if request.method == "GET":
+        sort_option = request.GET.get('selection')
 
         if result:
             if sort_option == 'newest':
                 products = filtered.filter(name__icontains=result).order_by('-datetime')
             elif sort_option == 'popular':
                 products = filtered.filter(name__icontains=result).order_by('-clicks')
-            elif sort_option == 'price_cheap':
+            elif sort_option == 'low_price':
                 products = filtered.filter(name__icontains=result).order_by('price')
-            elif sort_option == 'price_expensive':
-                products = Product.objects.all().order_by('-price')
+            elif sort_option == 'high_price':
+                products = filtered.filter(name__icontains=result).order_by('-price')
             else:
                 products = filtered.filter(name__icontains=result).order_by('-datetime')
         else:
@@ -102,10 +83,10 @@ def which_product(request, which_tag):
                 products = filtered.order_by('-datetime')
             elif sort_option == 'popular':
                 products = filtered.order_by('-clicks')
-            elif sort_option == 'price_cheap':
-                products = filtered.filter(name__icontains=result).order_by('price')
-            elif sort_option == 'price_expensive':
-                products = Product.objects.all().order_by('-price')
+            elif sort_option == 'low_price':
+                products = filtered.order_by('price')
+            elif sort_option == 'high_price':
+                products = filtered.order_by('-price')
             else:
                 products = filtered.order_by('-datetime')
     else:
@@ -113,6 +94,7 @@ def which_product(request, which_tag):
 
     # Pagination is implementing
     paginator = Paginator(products, items_in_page)  # Show 25 contacts per page
+
     page = request.GET.get('page')
     products_portion = paginator.get_page(page)
 

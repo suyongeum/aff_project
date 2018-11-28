@@ -2,55 +2,54 @@
  * Created by adagio on 2018-09-28.
  */
 
-//$(function(){
+// Menu selection
+function menuselection(which_selection) {
 
-$(document).ready(function() {
-    var pathname = window.location.pathname;
-    $('.nav-item a[href="'+pathname+'"]').parent().addClass('active').siblings().removeClass('active');
-});
+    // Change the menu based on the selection: change the location of active
+    $('#'+which_selection).parent().addClass('active').siblings().removeClass('active');
 
-$(document).ready(function() {
-    var pathname = window.location.pathname;
-    $('.middle-name a[href="'+pathname+'"]').parent().addClass('active').siblings().removeClass('active');
-});
+    // Select which sorting option is currently being selected
+    var current_sort_option = $('.middle-menu').find('.active').children('a').attr('id');
 
+    // // Let's sending a request to url
+    // // pathname shows one of the following [/men, /women, /kids, /geek, /pets]
+    var xhr = new XMLHttpRequest();
+    xhr.open('GET', '/'+which_selection+'?selection='+current_sort_option, true);
+    xhr.onload = function() {
+        if(this.status ==200) {
+            $('.row').replaceWith($(this.responseText).find(".row"));
+            $('.pagination').replaceWith($(this.responseText).filter(".pagination"));
+        }
+    };
+    xhr.send();
+    return false;
+}
+
+// Counting how many times the item has been clicked
 function dbupdate(id) {
     var xhr = new XMLHttpRequest();
     xhr.open('GET', '/dbupdate?id='+id, true);
     xhr.onload = function() {
-        console.log(this.responseText);
+        //console.log(this.responseText);
     };
     xhr.send();
 }
 
-    // name        = models.CharField(max_length=100)
-    // description = models.TextField()
-    // price       = models.DecimalField(max_digits=6, decimal_places=2)
-    // clicks      = models.IntegerField(default=0)
-    // image       = models.ImageField()
-    // link        = models.CharField(max_length=200)
-    // datetime    = models.DateTimeField()
+// Selection of sorting method
+function sortingselection(which_selection) {
 
-              //     <script>
-              //     if (window.location.pathname == '/man') {
-              //         document.write("<li><i class=\"fas fa-sort-alpha-up\"></i>: <a href=\"/man/newsort\"><span class=\"newest\"><strong>Newest</strong></span></a></li>");
-              //         document.write("<li><i class=\"fas fa-sort-alpha-up\"></i>: <a href=\"/man/popularsort\"><span class=\"popular\"><strong>Popular</strong></span></a></li>");
-              //         document.write("<li><i class=\"fas fa-sort-alpha-up\"></i>: <a href=\"/man/pricesort\"><span class=\"price\"><strong>Price</strong></span></a></li>");
-              //     } else if (window.location.pathname == '/woman')   {
-              //         document.write("<li><i class=\"fas fa-sort-alpha-up\"></i>: <a href=\"/woman/newsort\"><span class=\"newest\"><strong>Newest</strong></span></a></li>");
-              //         document.write("<li><i class=\"fas fa-sort-alpha-up\"></i>: <a href=\"/woman/popularsort\"><span class=\"popular\"><strong>Popular</strong></span></a></li>");
-              //         document.write("<li><i class=\"fas fa-sort-alpha-up\"></i>: <a href=\"/woman/pricesort\"><span class=\"price\"><strong>Price</strong></span></a></li>");
-              //     } else if (window.location.pathname == '/geek') {
-              //         document.write("<li><i class=\"fas fa-sort-alpha-up\"></i>: <a href=\"/geek/newsort\"><span class=\"newest\"><strong>Newest</strong></span></a></li>");
-              //         document.write("<li><i class=\"fas fa-sort-alpha-up\"></i>: <a href=\"/geek/popularsort\"><span class=\"popular\"><strong>Popular</strong></span></a></li>");
-              //         document.write("<li><i class=\"fas fa-sort-alpha-up\"></i>: <a href=\"/geek/pricesort\"><span class=\"price\"><strong>Price</strong></span></a></li>");
-              //     } else if (window.location.pathname == '/kids') {
-              //         document.write("<li><i class=\"fas fa-sort-alpha-up\"></i>: <a href=\"/kids/newsort\"><span class=\"newest\"><strong>Newest</strong></span></a></li>");
-              //         document.write("<li><i class=\"fas fa-sort-alpha-up\"></i>: <a href=\"/kids/popularsort\"><span class=\"popular\"><strong>Popular</strong></span></a></li>");
-              //         document.write("<li><i class=\"fas fa-sort-alpha-up\"></i>: <a href=\"/kids/pricesort\"><span class=\"price\"><strong>Price</strong></span></a></li>");
-              //     } else {
-              //         document.write("<li><i class=\"fas fa-sort-alpha-up\"></i>: <a href=\"/newsort\"><span class=\"newest\"><strong>Newest</strong></span></a></li>");
-              //         document.write("<li><i class=\"fas fa-sort-alpha-up\"></i>: <a href=\"/popularsort\"><span class=\"popular\"><strong>Popular</strong></span></a></li>");
-              //         document.write("<li><i class=\"fas fa-sort-alpha-up\"></i>: <a href=\"/pricesort\"><span class=\"price\"><strong>Price</strong></span></a></li>");
-              //     }
-              // </script>
+    // This part updates 'active'
+    $('#'+which_selection).parent().addClass('active').siblings().removeClass('active');
+
+    // // Let's sending a request to url
+    // // pathname shows one of the following [/men, /women, /kids, /geek, /pets]
+    var pathname = window.location.pathname;
+    var xhr = new XMLHttpRequest();
+    xhr.open('GET', pathname+'?selection='+which_selection, true);
+    xhr.onload = function() {
+        if(this.status ==200) {
+            $('.row').replaceWith($(this.responseText).find(".row"));
+        }
+    };
+    xhr.send();
+}

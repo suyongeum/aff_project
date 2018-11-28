@@ -31,13 +31,9 @@ urlpatterns = [
     url(r'^kids$', views.kids, name='kids'),
     url(r'^pet$', views.pet, name='pet'),
 	url(r'^dbupdate$', views.dbupdate, name='dbupdate'),
-    #url(r'^search$', views.search, name='search'),
     # url(r'^(?P<who>[a-zA-Z]+)/newsort$', views.newsort, name='newsort'),
     # url(r'^(?P<who>[a-zA-Z]+)/popularsort$', views.popularsort, name='popularsort'),
     # url(r'^(?P<who>[a-zA-Z]+)/pricesort$', views.pricesort, name='pricesort'),
-    # url(r'^newsort$', views.newsort, name='newsort'),
-    # url(r'^popularsort$', views.popularsort, name='popularsort'),
-    # url(r'^pricesort$', views.pricesort, name='pricesort'),
     url(r'^$', views.index, name='index'),
 ]
 
