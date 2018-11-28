@@ -2,9 +2,27 @@
  * Created by adagio on 2018-09-28.
  */
 
+// Home selection
+function home() {
+    // Select the current sort option
+    var current_sort_option = $('.middle-menu').find('.active').children('a').attr('id');
+
+   // Remove active from all menu
+    $('.top-menu').find('.active').removeClass('active');
+
+    // // Let's sending a request to url
+    var xhr = new XMLHttpRequest();
+    xhr.open('GET','?selection='+current_sort_option, true);
+    xhr.onload = function() {
+        if(this.status ==200) {
+            $('.row').replaceWith($(this.responseText).find(".row"));
+        }
+    };
+    xhr.send();
+}
+
 // Menu selection
 function menuselection(which_selection) {
-
     // Change the menu based on the selection: change the location of active
     $('#'+which_selection).parent().addClass('active').siblings().removeClass('active');
 
@@ -12,13 +30,12 @@ function menuselection(which_selection) {
     var current_sort_option = $('.middle-menu').find('.active').children('a').attr('id');
 
     // // Let's sending a request to url
-    // // pathname shows one of the following [/men, /women, /kids, /geek, /pets]
     var xhr = new XMLHttpRequest();
     xhr.open('GET', which_selection+'?selection='+current_sort_option, true);
     xhr.onload = function() {
         if(this.status ==200) {
              $('.row').replaceWith($(this.responseText).find(".row"));
-            $('.pagination').replaceWith($(this.responseText).filter(".pagination"));
+             $('.pagination').replaceWith($(this.responseText).filter(".pagination"));
         }
     };
     xhr.send();
@@ -42,12 +59,16 @@ function sortingselection(which_selection) {
     $('#'+which_selection).parent().addClass('active').siblings().removeClass('active');
 
     // Check which menu is currently being selected
-    var pathname = $('.top-menu').find('.active').children('a').attr('id');
+    var menu = $('.top-menu').find('.active').children('a').attr('id');
 
     // // Let's sending a request to url
-    // // pathname shows one of the following [/men, /women, /kids, /geek, /pets]
     var xhr = new XMLHttpRequest();
-    xhr.open('GET', pathname+'?selection='+which_selection, true);
+
+    if (menu) // If a menu is being selected
+        xhr.open('GET', menu+'?selection='+which_selection, true);
+    else     // otherwise
+        xhr.open('GET','?selection='+which_selection, true);
+
     xhr.onload = function() {
         if(this.status ==200) {
             $('.row').replaceWith($(this.responseText).find(".row"));

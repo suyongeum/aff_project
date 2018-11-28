@@ -28,15 +28,9 @@ div{
   /*border-bottom: solid 1px #afffa8;*/
 }
 
-.middle {
-  border-top: solid 1px #afffa8;
-  margin-top: 10px
-}
-
 .middle-menu a {
   color: #004445;
   text-decoration: none;
-
 }
 
 .middle-menu a:hover {
@@ -49,6 +43,11 @@ div{
   color: #021c1e;
   font-weight: bold;
   font-size: 120%;
+}
+
+.middle {
+  border-top: solid 1px #afffa8;
+  margin-top: 10px;
 }
 
 ul {
@@ -202,7 +201,6 @@ footer {
   border-color: #1cd108;
   border-radius: 4px;
   font-size: 1.3em;
-
 }
 
 .pagination-number:hover, .pagination-current {

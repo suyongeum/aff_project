@@ -1,6 +1,6 @@
     <nav class="navbar navbar-expand-md navbar-dark bg-success fixed-top">
      <div class="container">
-      <a class="navbar-brand" href="/"><b>&#x1d50a;&#x1d522;&#x1d522;&#x1d528;&#x1d50a;&#x1d52c;&#x1d52c;&#x1d521;&#x1d536;</b></a>
+      <a class="navbar-brand" href="#" onclick="home()"><b>&#x1d50a;&#x1d522;&#x1d522;&#x1d528;&#x1d50a;&#x1d52c;&#x1d52c;&#x1d521;&#x1d536;</b></a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExample03" aria-controls="navbarsExample03" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
@@ -23,12 +23,11 @@
             <a class="nav-link" href="#" onclick="menuselection('pet')" id="pet"><b>Pets</b></a>
           </li>
         </ul>
-
         <form action="{{ item.link }}" method="post" class="form-inline my-2 my-md-0">
             {% csrf_token %}
 {#            <input class="form-control" type="search" placeholder="Search" name="q">#}
             {{ form.search}}
-        </form>
+            </form>
       </div>
     </div>
     </nav>
