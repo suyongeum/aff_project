@@ -14,10 +14,10 @@ function menuselection(which_selection) {
     // // Let's sending a request to url
     // // pathname shows one of the following [/men, /women, /kids, /geek, /pets]
     var xhr = new XMLHttpRequest();
-    xhr.open('GET', '/'+which_selection+'?selection='+current_sort_option, true);
+    xhr.open('GET', which_selection+'?selection='+current_sort_option, true);
     xhr.onload = function() {
         if(this.status ==200) {
-            $('.row').replaceWith($(this.responseText).find(".row"));
+             $('.row').replaceWith($(this.responseText).find(".row"));
             $('.pagination').replaceWith($(this.responseText).filter(".pagination"));
         }
     };
@@ -41,9 +41,11 @@ function sortingselection(which_selection) {
     // This part updates 'active'
     $('#'+which_selection).parent().addClass('active').siblings().removeClass('active');
 
+    // Check which menu is currently being selected
+    var pathname = $('.top-menu').find('.active').children('a').attr('id');
+
     // // Let's sending a request to url
     // // pathname shows one of the following [/men, /women, /kids, /geek, /pets]
-    var pathname = window.location.pathname;
     var xhr = new XMLHttpRequest();
     xhr.open('GET', pathname+'?selection='+which_selection, true);
     xhr.onload = function() {

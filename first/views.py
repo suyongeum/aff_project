@@ -14,7 +14,6 @@ def index(request):
 
 def man(request):
     products_portion, form = which_product(request, 'man')
-    print("MAN", products_portion)
     return render(request, 'first/display.html', {'products': products_portion, 'form': form})
 
 def woman(request):

@@ -34,7 +34,7 @@ div{
 }
 
 .middle-menu a {
-  color: #575e66;
+  color: #004445;
   text-decoration: none;
 
 }
@@ -46,7 +46,7 @@ div{
 }
 
 .middle-menu .active a{
-  color: #575e66;
+  color: #021c1e;
   font-weight: bold;
   font-size: 120%;
 }
