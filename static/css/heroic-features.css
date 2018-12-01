@@ -207,6 +207,25 @@ footer {
   background-color: #12aa02;
 }
 
+/* Footer */
+
+.copyright {
+  padding: 5px;
+  margin: 2px 10px 2px 10px;
+  background-color: #12aa02;
+}
+
+.py-4 {
+  padding: 20px 10px 0 10px !important;
+}
+
+.footblock {
+  padding: 0 0 20px 0;
+}
+
+.m-0 {
+  font-size: 0.9em;
+}
 
 
 

@@ -6,7 +6,7 @@ from django.http import HttpResponse
 
 #Create your views here.
 
-items_in_page = 3
+items_in_page = 24
 
 def index(request):
     products_portion, form = which_product(request, 'index')

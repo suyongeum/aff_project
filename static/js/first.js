@@ -15,7 +15,7 @@ function home() {
     xhr.open('GET','?selection='+current_sort_option, true);
     xhr.onload = function() {
         if(this.status ==200) {
-            $('.row').replaceWith($(this.responseText).find(".row"));
+            $('.replace').replaceWith($(this.responseText).find(".replace"));
             $('.pagination').replaceWith($(this.responseText).filter(".pagination"));
         }
     };
@@ -35,7 +35,7 @@ function menuselection(which_selection) {
     xhr.open('GET', which_selection+'?selection='+current_sort_option, true);
     xhr.onload = function() {
         if(this.status ==200) {
-             $('.row').replaceWith($(this.responseText).find(".row"));
+             $('.replace').replaceWith($(this.responseText).find(".replace"));
              $('.pagination').replaceWith($(this.responseText).filter(".pagination"));
         }
     };
@@ -72,7 +72,7 @@ function sortingselection(which_selection) {
 
     xhr.onload = function() {
         if(this.status ==200) {
-            $('.row').replaceWith($(this.responseText).find(".row"));
+            $('.replace').replaceWith($(this.responseText).find(".replace"));
         }
     };
     xhr.send();
@@ -97,7 +97,7 @@ function arrow(page_number) {
 
     xhr.onload = function() {
         if(this.status ==200) {
-            $('.row').replaceWith($(this.responseText).find(".row"));
+            $('.replace').replaceWith($(this.responseText).find(".replace"));
             $('.pagination').replaceWith($(this.responseText).filter(".pagination"));
         }
     };
@@ -140,7 +140,7 @@ function send_sesearch_request() {
 
     xhr.onload = function() {
          if(this.status ==200) {
-            $('.row').replaceWith($(this.responseText).find(".row"));
+            $('.replace').replaceWith($(this.responseText).find(".replace"));
             $('.pagination').replaceWith($(this.responseText).filter(".pagination"));
         }
     };
