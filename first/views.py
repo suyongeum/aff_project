@@ -6,7 +6,7 @@ from django.http import HttpResponse
 
 #Create your views here.
 
-items_in_page = 24
+items_in_page = 3
 
 def index(request):
     products_portion, form = which_product(request, 'index')
@@ -41,60 +41,71 @@ def dbupdate(request):
         object.save()
     return HttpResponse('OK')
 
-def which_product(request, which_tag):
+def which_product(request, menu):
 
-    if which_tag is 'index':
+    if menu is 'index':
         filtered = Product.objects.all()
-    if which_tag is 'man':
+    if menu is 'man':
         filtered = Product.objects.filter(man_tag=True)
-    if which_tag is 'woman':
+    if menu is 'woman':
         filtered = Product.objects.filter(woman_tag=True)
-    if which_tag is 'geek':
+    if menu is 'geek':
         filtered = Product.objects.filter(geek_tag=True)
-    if which_tag is 'kid':
+    if menu is 'kid':
         filtered = Product.objects.filter(kid_tag=True)
-    if which_tag is 'pet':
+    if menu is 'pet':
         filtered = Product.objects.filter(pet_tag=True)
 
+    # Initial form value. Should be here because of CSRF verification
     form = SelectionForm(request.POST or None)
+    form.is_valid()
 
-    if form.is_valid():
-        result = form.cleaned_data['search']
-    else:
-        result = ''
+    # Until this point there are three parameters
+    # menu: showing which menu is being selected
+    # sort_option: showing which option is being selected
+    # search_str: showing a string used for searching result
 
     if request.method == "GET":
         sort_option = request.GET.get('selection')
-
-        if result:
-            if sort_option == 'newest':
-                products = filtered.filter(name__icontains=result).order_by('-datetime')
-            elif sort_option == 'popular':
-                products = filtered.filter(name__icontains=result).order_by('-clicks')
-            elif sort_option == 'low_price':
-                products = filtered.filter(name__icontains=result).order_by('price')
-            elif sort_option == 'high_price':
-                products = filtered.filter(name__icontains=result).order_by('-price')
-            else:
-                products = filtered.filter(name__icontains=result).order_by('-datetime')
-        else:
-            if sort_option == 'newest':
-                products = filtered.order_by('-datetime')
-            elif sort_option == 'popular':
-                products = filtered.order_by('-clicks')
-            elif sort_option == 'low_price':
-                products = filtered.order_by('price')
-            elif sort_option == 'high_price':
-                products = filtered.order_by('-price')
-            else:
-                products = filtered.order_by('-datetime')
-    else:
-        products = filtered.order_by('-datetime')
+        products = sort_products(sort_option, filtered)
+    else: # request.method == "POST": It is for search option
+        sort_option = request.POST.get('selection')
+        search_str = request.POST.get('search')
+        products = filter_products(sort_option, search_str, filtered)
+        # print('menu:', menu)
+        # print('sort_option:', sort_option)
+        # print('search_str:', search_str)
 
     # Pagination is implementing
     paginator = Paginator(products, items_in_page)  # Show 25 contacts per page
-
     page = request.GET.get('page')
     products_portion = paginator.get_page(page)
 
     return products_portion, form
+
+def sort_products(sort_option, filtered):
+    if sort_option == 'new':
+        products = filtered.order_by('-datetime')
+    elif sort_option == 'popular':
+        products = filtered.order_by('-clicks')
+    elif sort_option == 'low_price':
+        products = filtered.order_by('price')
+    elif sort_option == 'high_price':
+        products = filtered.order_by('-price')
+    else:
+        products = filtered.order_by('-datetime')
+    return products
+
+def filter_products(sort_option, search_str, filtered):
+    if sort_option == 'new':
+        products = filtered.filter(name__icontains=search_str).order_by('-datetime')
+    elif sort_option == 'popular':
+        products = filtered.filter(name__icontains=search_str).order_by('-clicks')
+    elif sort_option == 'low_price':
+        products = filtered.filter(name__icontains=search_str).order_by('price')
+    elif sort_option == 'high_price':
+        products = filtered.filter(name__icontains=search_str).order_by('-price')
+    else:
+        products = filtered.filter(name__icontains=search_str).order_by('-datetime')
+
+    return products
