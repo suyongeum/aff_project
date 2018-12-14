@@ -9,7 +9,7 @@ class Product(models.Model):
     price       = models.DecimalField(max_digits=9, decimal_places=2)
     clicks      = models.IntegerField(default=random.randint(1,30))
     image       = models.ImageField()
-    link        = models.CharField(max_length=200)
+    link        = models.CharField(max_length=800)
     datetime    = models.DateTimeField()
     man_tag     = models.BooleanField(default=True)
     woman_tag   = models.BooleanField(default=True)
