@@ -28,15 +28,9 @@ div{
   /*border-bottom: solid 1px #afffa8;*/
 }
 
-.middle {
-  border-top: solid 1px #575e66;
-  margin-top: 10px
-}
-
 .middle-menu a {
-  color: #575e66;
+  color: #004445;
   text-decoration: none;
-  font-size: 24px;
 }
 
 .middle-menu a:hover {
@@ -45,10 +39,15 @@ div{
   text-decoration: none;
 }
 
-.middle-menu ul li .active {
-  color: #166ba2;
-  cursor: pointer;
-  text-decoration: none;
+.middle-menu .active a{
+  color: #021c1e;
+  font-weight: bold;
+  font-size: 120%;
+}
+
+.middle {
+  border-top: solid 2px #12aa02;
+  margin-top: 10px;
 }
 
 ul {
@@ -164,8 +163,6 @@ ul li span {
     border-radius: 2px;
 }
 
-
-
 footer {
   margin: 25px 0 0 0;
 }
@@ -196,12 +193,40 @@ footer {
 
 .pagination-number {
   background-color: #afffa8;
-  padding: 0.3em 0.5em;
+  padding: 0.3em 0.7em;
+  margin:3px;
   color: #ffffff;
-  border-radius: 10px;
-  font-size: 1em;
+  border-style: solid;
+  border-width: 1px;
+  border-color: #1cd108;
+  border-radius: 4px;
+  font-size: 1.3em;
 }
 
 .pagination-number:hover, .pagination-current {
   background-color: #12aa02;
 }
+
+/* Footer */
+
+.copyright {
+  padding: 5px;
+  margin: 2px 10px 2px 10px;
+  background-color: #12aa02;
+}
+
+.py-4 {
+  padding: 20px 10px 0 10px !important;
+}
+
+.footblock {
+  padding: 0 0 20px 0;
+}
+
+.m-0 {
+  font-size: 0.9em;
+}
+
+
+
+
