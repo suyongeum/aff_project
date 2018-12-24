@@ -1,96 +1,29 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="Online shopping from the earth's most unique selection of geek and goody products. Find a gift that surprises and impress people whom you love."/>
-	<meta name="google-site-verification" content="LDdBzC1sZS88_gOplKIboYxF3ChVsWv424T4ZQkPzzc" />
-    <title>Geek Goody | Online Shopping for the world most unique products and much more</title>{% load static %}
 
-    <link rel="icon" type="image/ico" href="./media/icon.png" />
-    <!-- Bootstrap core CSS -->
-    <link href="/static/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-    <!-- Custom styles for this template -->
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
-    <link href="https://fonts.googleapis.com/css?family=Oswald" rel="stylesheet">
-    <link href="/static/css/heroic-features.css" rel="stylesheet">
-	{% include './includes/third.html' %}
-  </head>
-  <body>
+    <!-- Head -->
+    {% include './includes/_head.html' %}
+
+    <body>
     <!-- Navigation-->
     {% include './includes/_navbar.html' %}
+
+    <!-- Content-->
     {% block content %}
     {% endblock %}
 
-    <div class="pagination">
-        {% if products.has_previous %}
-            <a class="pagination-action" href="#" onclick="arrow('1')" id="1"><i class="fas fa-angle-double-left"></i></a>
-            <a class="pagination-action" href="#" onclick="arrow('{{ products.previous_page_number }}')" id="{{ products.previous_page_number }}"><i class="fas fa-angle-left"></i></a>
-        {% endif %}
-        {% for num in products.paginator.page_range %}
-            {% if products.number == num %}
-                <span class="pagination-number pagination-current">{{ num }}</span>
-            {% elif num > products.number|add:'-5' and num < products.number|add:'5' %}
-                <a class="pagination-number" href="#" onclick="arrow('{{ num }}')" id="{{ num }}">{{ num }}</a>
-            {% endif %}
-        {% endfor %}
-        {% if products.has_next %}
-            <a class="pagination-action"  href="#" onclick="arrow('{{ products.next_page_number }}')" id="{{ products.next_page_number }}"><i class="fas fa-angle-right"></i></a>
-            <a class="pagination-action"  href="#" onclick="arrow('{{ products.paginator.num_pages }}')" id="{{ products.paginator.num_pages }}"><i class="fas fa-angle-double-right"></i></a>
-        {% endif %}
-    </div>
+    <!-- Pagination -->
+    {% include './includes/_pagination.html' %}
 
     <!-- Footer -->
-{#    <footer class="py-5 bg-dark">#}
-{#      <div class="container">#}
-{#        <p class="m-0 text-center text-white">Copyright &copy; GeekGoody.com 2018</p>#}
-{#      </div>      #}
-{#    </footer>#}
-
-    <footer class="py-4 bg-dark">
-      <div class="container">
-          <div class="row">
-              <div class="col-md-4 footblock">
-                  <h5 class="text-white text-center"><i class="fas fa-gift"> Categories </i></h5>
-                  <p class="m-0 text-center"><a class="text-white" href="#" onclick="menuselection('man')">Gifts For Men</a></p>
-                  <p class="m-0 text-center"><a class="text-white" href="#" onclick="menuselection('woman')">Gifts For WomMen</a></p>
-                  <p class="m-0 text-center"><a class="text-white" href="#" onclick="menuselection('kids')">Gifts For Kids</a></p>
-                  <p class="m-0 text-center"><a class="text-white" href="#" onclick="menuselection('geek')">Gifts For Geek</a></p>
-                  <p class="m-0 text-center"><a class="text-white" href="#" onclick="menuselection('pet')">Gifts For Pets</a></p>
-              </div>
-              <div class="col-md-4 footblock">
-                  <h5 class="text-white text-center"><i class="fas fa-lightbulb"> GeekGoody</i></h5>
-                  <p class="m-0 text-white text-center">
-                      Good ideas better spread before silently disappeared.
-                      Good design, unique, quality, or even geeky and goody products are advertised.
-                      Let us know yours to advertise to the world! </p>
-                  <p class="m-0 text-white text-center"><i class="fas fa-lightbulb"></i> <i class="fas fa-lightbulb"></i> <i class="fas fa-lightbulb"></i></p>
-              </div>
-              <div class="col-md-4 footblock">
-                  <h5 class="text-white text-center"><i class="fas fa-question"> Miscellaneous </i></h5>
-                  <p class="m-0 text-white text-center">Copyright Policy </p>
-                  <p class="m-0 text-white text-center">Any infringes on your copyright </p>
-                  <p class="m-0 text-white text-center">report to us with further details.</p>
-                  <p class="m-0 text-white text-center"> ------------------------- </p>
-                  <p class="m-0 text-white text-center"><i class="fas fa-envelope"> geekgoodycom@gmail.com</i></p>
-              </div>
-          </div>
-      </div>
-      <div class="row copyright">
-          <div class="col-md-12">
-              <p class="m-1 text-center text-white">&copy; <b>GeekGoody</b> 2018</p>
-          </div>
-      </div>
-    </footer>
-
-
-    <!-- /.container -->
+    {% include './includes/_footer.html' %}
 
     <!-- Bootstrap core JavaScript -->
     <script src="/static/vendor/jquery/jquery.min.js"></script>
     <script src="/static/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
     <script src="/static/js/first.js"></script>
     <script src="/static/js/vig.js"></script>
-    <script src="https://www.dwin2.com/pub.548033.min.js"></script>
+{#    <script src="https://www.dwin2.com/pub.548033.min.js"></script>#}
+
   </body>
 </html>

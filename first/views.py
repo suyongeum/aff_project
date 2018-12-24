@@ -3,6 +3,7 @@ from django.shortcuts import render
 from .models import Product
 from .forms import SelectionForm
 from django.http import HttpResponse
+from reviews.views import index  as review_index
 
 #Create your views here.
 
@@ -31,6 +32,9 @@ def kids(request):
 def pet(request):
     products_portion, form = which_product(request, 'pet')
     return render(request, 'first/display.html', {'products': products_portion, 'form': form})
+
+def reviews(request):
+    return review_index(request)
 
 def dbupdate(request):
     if request.GET.get('id'):

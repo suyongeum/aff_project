@@ -18,6 +18,9 @@
 **/js/vig.js
 **/js/third.js
 
+# static_file
+staticfiles/
+
 # db file
 **/db*
 

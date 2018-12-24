@@ -22,6 +22,12 @@
           <li class="nav-item">
             <a class="nav-link" href="#" onclick="menuselection('pet')" id="pet"><b>Pets</b></a>
           </li>
+          <li>
+            <div class="nav-link"><b>-</b></div>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/blogs"><b>Blogs</b></a>
+          </li>
         </ul>
         <form action="{{ item.link }}" method="post" class="form-inline my-2 my-md-0" id="search-form">
             {% csrf_token %}
