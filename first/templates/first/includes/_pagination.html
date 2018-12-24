@@ -1,0 +1,17 @@
+    <div class="pagination">
+        {% if products.has_previous %}
+            <a class="pagination-action" href="#" onclick="arrow('1')" id="1"><i class="fas fa-angle-double-left"></i></a>
+            <a class="pagination-action" href="#" onclick="arrow('{{ products.previous_page_number }}')" id="{{ products.previous_page_number }}"><i class="fas fa-angle-left"></i></a>
+        {% endif %}
+        {% for num in products.paginator.page_range %}
+            {% if products.number == num %}
+                <span class="pagination-number pagination-current">{{ num }}</span>
+            {% elif num > products.number|add:'-5' and num < products.number|add:'5' %}
+                <a class="pagination-number" href="#" onclick="arrow('{{ num }}')" id="{{ num }}">{{ num }}</a>
+            {% endif %}
+        {% endfor %}
+        {% if products.has_next %}
+            <a class="pagination-action"  href="#" onclick="arrow('{{ products.next_page_number }}')" id="{{ products.next_page_number }}"><i class="fas fa-angle-right"></i></a>
+            <a class="pagination-action"  href="#" onclick="arrow('{{ products.paginator.num_pages }}')" id="{{ products.paginator.num_pages }}"><i class="fas fa-angle-double-right"></i></a>
+        {% endif %}
+    </div>
