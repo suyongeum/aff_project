@@ -14,7 +14,7 @@
                 <h2 class="features_title"><a href="{% url 'reviews:detail' slug=article.slug %}" style="text-decoration : none">{{article.title}}</a></h2>
                 <p class="bd-lead-content">
                     <a href="{% url 'reviews:detail' slug=article.slug %}" style="text-decoration : none">
-                        <img class="list" src="./media/{{ article.thumb }}" height="80" width="160">
+                        <img class="list" src="/media/{{ article.thumb }}" height="80" width="160">
                     </a>
                     {{article.snippet}}
                 </p>
@@ -24,18 +24,6 @@
             </div>
 
         {% endfor %}
-        <br><br><br><br><br>
-        <!-- Disque  -->
-        <div id='disqus_thread'></div>
-        <script>
-            (function() {
-            var d = document, s = d.createElement('script');
-            s.src = 'https://geekgoody.disqus.com/embed.js';
-            s.setAttribute('data-timestamp', +new Date());
-            (d.head || d.body).appendChild(s);
-            })();
-        </script>
-        <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
 
     </div>
 {% endblock %}
