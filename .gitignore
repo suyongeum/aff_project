@@ -26,3 +26,6 @@ staticfiles/
 
 # third party files
 **/includes/third*
+
+# articles
+**/articles/*

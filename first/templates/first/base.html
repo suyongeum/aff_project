@@ -2,28 +2,30 @@
 <html lang="en">
 
     <!-- Head -->
-    {% include './includes/_head.html' %}
+    <head>
+        {% block head %}{% endblock %}
+        {% include 'first/includes/_head.html' %}
+    </head>
 
     <body>
-    <!-- Navigation-->
-    {% include './includes/_navbar.html' %}
+        <!-- Navigation-->
+        {% include 'first/includes/_navbar.html' %}
 
-    <!-- Content-->
-    {% block content %}
-    {% endblock %}
+        <!-- Content-->
+        {% block content %}{% endblock %}
 
-    <!-- Pagination -->
-    {% include './includes/_pagination.html' %}
+        <!-- Pagination -->
+        {% include 'first/includes/_pagination.html' %}
 
-    <!-- Footer -->
-    {% include './includes/_footer.html' %}
+        <!-- Footer -->
+        {% include 'first/includes/_footer.html' %}
 
-    <!-- Bootstrap core JavaScript -->
-    <script src="/static/vendor/jquery/jquery.min.js"></script>
-    <script src="/static/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-    <script src="/static/js/first.js"></script>
-    <script src="/static/js/vig.js"></script>
-{#    <script src="https://www.dwin2.com/pub.548033.min.js"></script>#}
+        <!-- Bootstrap core JavaScript -->
+        <script src="/static/vendor/jquery/jquery.min.js"></script>
+        <script src="/static/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+        <script src="/static/js/first.js"></script>
+        <script src="/static/js/vig.js"></script>
+    {#    <script src="https://www.dwin2.com/pub.548033.min.js"></script>#}
 
   </body>
 </html>

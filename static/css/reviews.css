@@ -49,7 +49,7 @@ h2.features_title {
 }
 
 p.bd-lead-content {
-  margin: 0 0 10px 0;
+  margin: 20px 0 20px 0;
   padding: 0;
 }
 
@@ -71,10 +71,11 @@ strong.feature_item {
 
 img.list {
   float: left;
+  margin: 0 20px 0 0;
 }
 
 div.review_list {
-  margin: 0 0 40px 0;
+  margin: 0 0 20px 0;
   padding: 0 50px 10px 0;
   border-bottom: 1px solid rgba(52, 52, 52, 0.13);
 }

@@ -8,7 +8,8 @@ app_name = 'reviews'
 
 urlpatterns = [
     url(r'^$', views.index, name='index'),
-    url(r'drone/', views.drone, name='drone'),
+    #url(r'drone/', views.drone, name='drone'),
+    url(r'^(?P<slug>[\w-]+)/$', views.article_details, name='detail'),
 ]
 
 urlpatterns += staticfiles_urlpatterns()

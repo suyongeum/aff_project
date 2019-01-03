@@ -2,7 +2,11 @@
 <html lang="en">
 
   <!-- Head -->
-  {% include 'first/includes/_head.html' %}
+  <head>
+      {% block head %}
+      {% endblock %}
+      {% include 'first/includes/_head.html' %}
+  </head>
 
   <body>
     <!-- Navigation-->

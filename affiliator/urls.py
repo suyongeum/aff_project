@@ -30,7 +30,7 @@ urlpatterns = [
     url(r'^pet$', views.pet, name='pet'),
 	url(r'^dbupdate$', views.dbupdate, name='dbupdate'),
     url(r'^$', views.index, name='index'),
-    url(r'^blogs', include('reviews.urls')),
+    url(r'^articles/', include('reviews.urls')),
 ]
 
 urlpatterns += staticfiles_urlpatterns()
