@@ -24,6 +24,7 @@ function home() {
 
 // Menu selection
 function menuselection(which_selection) {
+
     // Change the menu based on the selection: change the location of active
     $('#'+which_selection).parent().addClass('active').siblings().removeClass('active');
 
@@ -37,6 +38,7 @@ function menuselection(which_selection) {
         if(this.status ==200) {
              $('.replace').replaceWith($(this.responseText).find(".replace"));
              $('.pagination').replaceWith($(this.responseText).filter(".pagination"));
+             // $('.container').replaceWith($(this.responseText).filter(".container"));
         }
     };
     xhr.send();
