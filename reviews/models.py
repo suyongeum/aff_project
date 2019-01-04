@@ -6,7 +6,7 @@ class Article(models.Model):
     slug  = models.SlugField()
     summary  = models.TextField()
     key_words = models.TextField()
-    body_html = models.CharField(max_length=100)
+    body_html = models.TextField()
     date  = models.DateTimeField(auto_now_add=True)
     thumb = models.ImageField(default='default.png')
 

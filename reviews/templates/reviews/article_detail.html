@@ -8,6 +8,7 @@
 
 {% block content %}
     <div class="container container_body">
-        {% include 'reviews/articles/'|add:article.body_html %}
+{#        {% include 'reviews/articles/'|add:article.body_html %}#}
+    {{ article.body_html | safe }}
     </div>
 {% endblock %}
