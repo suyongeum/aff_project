@@ -14,4 +14,4 @@ class Article(models.Model):
         return self.title
 
     def snippet(self):
-        return self.summary[:200] + '...'
+        return self.summary[:230] + '...'

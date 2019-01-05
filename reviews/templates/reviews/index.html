@@ -14,7 +14,7 @@
                 <h2 class="features_title"><a href="{% url 'reviews:detail' slug=article.slug %}" style="text-decoration : none">{{article.title}}</a></h2>
                 <p class="bd-lead-content">
                     <a href="{% url 'reviews:detail' slug=article.slug %}" style="text-decoration : none">
-                        <img class="list" src="/media/{{ article.thumb }}" height="80" width="160">
+                        <img class="list" src="/media/{{ article.thumb }}" height="100" width="120">
                     </a>
                     {{article.snippet}}
                 </p>
@@ -22,8 +22,9 @@
 {#                    {{article.date}}#}
 {#                </p>#}
             </div>
-
         {% endfor %}
+
+        <br><br>
 
     </div>
 {% endblock %}

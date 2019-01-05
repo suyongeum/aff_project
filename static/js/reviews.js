@@ -32,6 +32,16 @@ $('#search-form').on('submit', function(event){
     send_sesearch_request();
 });
 
+// Counting how many times the item has been clicked
+function dbupdate(id) {
+    var xhr = new XMLHttpRequest();
+    xhr.open('GET', '/dbupdate?id='+id, true);
+    xhr.onload = function() {
+        //console.log(this.responseText);
+    };
+    xhr.send();
+}
+
 function send_sesearch_request() {
     // Check which menu is currently being selected
     var menu = $('.top-menu').find('.active').children('a').attr('id');
